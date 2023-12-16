@@ -1,0 +1,114 @@
+.wrapper{
+    height: 100vh;
+}
+.loginContent {
+    width: 430px;
+    margin-inline: auto;
+    transform: translateY(-50%);
+    margin-top: 50vh;
+}
+
+.form {
+    padding: 40px 20px;
+    border-radius: 2%;
+    box-shadow: 2px 2px 2px rgb(220, 220, 220), -2px 2px 2px rgb(220, 220, 220);
+    font-weight: 400;
+    background-color: white;
+}
+
+.logoText {
+    font-weight: 350 !important;
+    margin-top: 15px;
+}
+
+.formHeader {
+    text-align: center;
+    font-weight: 400 !important;
+}
+
+.button {
+    background-color: #035FB2 !important;
+    width: 200px;
+    border-radius: 180px !important;
+    margin-top: 0;
+}
+
+.input {
+    height: 50px;
+}
+
+.input:focus {
+    border-color: #ced4da !important;
+    box-shadow: none !important;
+}
+
+.backgroundImage {
+    height: 70vh;
+    border-radius: 0 0 0 90px;
+    background-image: url(/public/images/login-bg-1.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.forgetPassword {
+    font-size: 12px;
+    color: #126CBD;
+    font-weight: 500;
+}
+
+.errorInputfield {
+    border: 1px solid red !important;
+}
+
+.errorLabel{
+    color: red;
+}
+
+.passwordWrapper{
+    position: relative;
+}
+.hidePassword{
+   position: absolute;
+   right: 10px;
+   margin-top: 25px;
+   transform: translateY(-50%);
+}
+.logo{
+    margin-bottom: 25px;
+}
+@media screen and (max-width: 440px) {
+    .backgroundImage {
+        height: 40vh;
+    }
+
+    .form {
+        box-shadow: none;
+    }
+
+    .loginContent {
+        margin-top: 0;
+        width: 100%;
+        margin-inline: 0;
+        transform: none;
+    }
+
+    .logo {
+        height: 40vh;
+        padding-inline: auto;
+        padding-top: 17vh;
+        margin-bottom: 0;
+    }
+
+    .button {
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .formHeader {
+        text-align: left;
+    }
+    
+    .forgetPassword{
+        font-size: 14px;
+    }
+}

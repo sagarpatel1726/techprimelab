@@ -1,0 +1,167 @@
+.wrapper{
+    min-height: 100vh;
+    background-color: rgb(239, 233, 233);
+}
+.projectContent {
+    margin-top: 2vh;
+}
+
+.form {
+    padding: 40px 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgb(220, 220, 220), -2px 2px 2px rgb(220, 220, 220);
+    font-weight: 300;
+    margin-inline: 1%;
+    min-height: 90vh;
+    margin-top: -10vh;
+}
+
+.header{
+    position: relative;
+    height: 14vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.backgroundImage {
+    height: 24vh;
+    border-radius: 0 0 0 90px;
+    background-image: url(/public/images/Header-bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title{
+    color: white;
+    position: absolute;
+    left: 5%;
+    font-weight: 700 !important;
+    font-size: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.bigInput{
+    height: 70px;
+    border-color: gray;
+}
+
+.bigInput:focus{
+    border-color: gray !important;
+    box-shadow: none !important;
+}
+
+.input {
+    height: 50px !important;
+    border-color: gray;
+}
+
+.inputWrapper{
+    margin-right: 8.34% !important;
+}
+.inputstatusWrapper{
+    margin-right: 8.34% !important;
+}
+.input:focus {
+    border-color: gray !important;
+    box-shadow: none !important;
+}
+
+.button{
+    height: 40px;
+    width: 100%;
+    color: white;
+    background-color: #035FB2;
+    border-radius: 180px;
+}
+
+.button:focus{
+    box-shadow: none;
+}
+
+.button:hover{
+    color: white;
+}
+
+.logout{
+    display: none;
+}
+
+.saveButtonDextop{
+    display: inline-block;
+}
+
+.saveButtonMobile{
+    display: none;
+}
+
+.themeRow{
+    margin-bottom: 30px !important;
+}
+
+label{
+    font-weight: 400;
+    color: gray;
+}
+
+.errorInputfield {
+    border: 1px solid red !important;
+}
+
+.Row{
+    margin-top: 30px !important;
+}
+
+@media screen and (max-width: 440px) {
+    .backgroundImage {
+        height: 8vh;
+        border-radius: 0 0 0 90px;
+        background-image: url(/public/images/Header-bg.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .header .logo{
+        display: none;
+    }
+
+    .projectContent{
+        margin-top: 0;
+    }
+
+    .header{
+        height: 8vh;
+    }
+
+    .title{
+        left: 7%
+    }
+
+    .logout{
+        position: absolute;
+        right: 5%;
+        display: inline-block;
+    }
+    .saveButtonDextop{
+        display: none;
+    }
+    .saveButtonMobile{
+        display: block;
+    }
+    .inputstatusWrapper{
+        margin-right: 0 !important;
+    }
+    .form{
+        margin-inline: 3%;
+        margin-top: 10px;
+        padding-bottom: 75px;
+    }
+    .input{
+        margin-bottom: 20px;
+    }
+    .Row{
+        margin-top: 0 !important;
+    }
+}
