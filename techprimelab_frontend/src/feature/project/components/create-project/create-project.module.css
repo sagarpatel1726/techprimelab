@@ -1,6 +1,15 @@
+:root{
+    --backgroundcolor: rgb(239, 233, 233);
+    --shadowcolor: rgb(220, 220, 220);
+    --white: white;
+    --gray: gray;
+    --red: red;
+    --primary-blue: #035FB2;
+}
+
 .wrapper{
     min-height: 100vh;
-    background-color: rgb(239, 233, 233);
+    background-color: var(--backgroundcolor);
 }
 .projectContent {
     margin-top: 2vh;
@@ -9,8 +18,8 @@
 .form {
     padding: 40px 20px;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 2px 2px 2px rgb(220, 220, 220), -2px 2px 2px rgb(220, 220, 220);
+    background-color: var(--white);
+    box-shadow: 2px 2px 2px var(--shadowcolor), -2px 2px 2px var(--shadowcolor);
     font-weight: 300;
     margin-inline: 1%;
     min-height: 90vh;
@@ -34,7 +43,7 @@
 }
 
 .title{
-    color: white;
+    color: var(--white);
     position: absolute;
     left: 5%;
     font-weight: 700 !important;
@@ -46,17 +55,17 @@
 
 .bigInput{
     height: 70px;
-    border-color: gray;
+    border-color: var(--gray);
 }
 
 .bigInput:focus{
-    border-color: gray !important;
+    border-color: var(--gray) !important;
     box-shadow: none !important;
 }
 
 .input {
     height: 50px !important;
-    border-color: gray;
+    border-color: var(--gray);
 }
 
 .inputWrapper{
@@ -66,15 +75,15 @@
     margin-right: 8.34% !important;
 }
 .input:focus {
-    border-color: gray !important;
+    border-color: var(--gray) !important;
     box-shadow: none !important;
 }
 
 .button{
     height: 40px;
     width: 100%;
-    color: white;
-    background-color: #035FB2;
+    color: var(--white);
+    background-color: var(--primary-blue);
     border-radius: 180px;
 }
 
@@ -83,7 +92,7 @@
 }
 
 .button:hover{
-    color: white;
+    color: var(--white);
 }
 
 .logout{
@@ -104,11 +113,11 @@
 
 label{
     font-weight: 400;
-    color: gray;
+    color: var(--gray);
 }
 
 .errorInputfield {
-    border: 1px solid red !important;
+    border: 1px solid var(--red) !important;
 }
 
 .Row{
