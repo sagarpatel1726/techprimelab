@@ -27,7 +27,7 @@ import jwt from 'jsonwebtoken';
       email,
     }
     const expiry = {
-      expiresIn: '10s'
+      expiresIn: '10h'
     }
     const token = jwt.sign(data, jwtSecretKey, expiry);
     return token;
