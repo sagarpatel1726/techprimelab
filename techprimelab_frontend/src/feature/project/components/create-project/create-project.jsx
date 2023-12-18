@@ -3,6 +3,7 @@ import styles from './create-project.module.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { axiosInstance } from '../../../../axios/axios.instance';
+import { useNavigate } from 'react-router-dom';
 
 const CreatProjectSchema = Yup.object().shape({
     theme: Yup.string().required('Email is required').required('Theme is required'),
@@ -19,9 +20,15 @@ const CreatProjectSchema = Yup.object().shape({
 
 
 function CreateProject() {
+    const navigation = useNavigate();
 
     const createProject = (value) => {
         axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => console.log(err));
+    }
+
+    const logout = () => {
+        localStorage.removeItem('authToken');
+        navigation('/');
     }
 
     return (
@@ -35,7 +42,7 @@ function CreateProject() {
                                 <h5>Create Project</h5>
                             </div>
                             <img className={`${styles.logo}`} src={process.env.PUBLIC_URL + "/images/Logo.svg"} alt="logo.svg" height={"60%"} />
-                            <img className={`${styles.logout}`} src={process.env.PUBLIC_URL + "/images/Logout.svg"} alt="logout.svg" />
+                            <img className={`${styles.logout}`} onClick={logout} src={process.env.PUBLIC_URL + "/images/Logout.svg"} alt="logout.svg" />
                         </div>
                     </div>
                     <div className={`${styles.projectContent}`}>

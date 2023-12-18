@@ -12,6 +12,7 @@ axiosInstance.interceptors.response.use(function (response) {
     return response;
 }, (error) => {
     if(error?.response?.status == 401){
+        localStorage.removeItem('authToken');
         window.location = "http://localhost:3000/"
     }
      throw error;

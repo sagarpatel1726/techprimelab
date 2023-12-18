@@ -5,10 +5,9 @@ const user = new mongoose.Schema({
       type: String,
       required: true
     },
-    password: {
-      type: String,
-      required: true
-    },
+    salt: String,
+    hash: String
   });
+
 
 export default mongoose.model('User',user);

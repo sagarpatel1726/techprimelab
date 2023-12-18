@@ -1,23 +1,39 @@
 import { IUser } from '../interface/user.interface.js';
 import User from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
-
- export class UserService {
+import crypto from 'crypto';
+export class UserService {
   private static userServiceInstance: UserService;
 
   constructor() { }
 
-  public static getInstance(): UserService{
-    if(UserService.userServiceInstance){
-        return UserService.userServiceInstance;
-    } else{
+  public static getInstance(): UserService {
+    if (UserService.userServiceInstance) {
+      return UserService.userServiceInstance;
+    } else {
       UserService.userServiceInstance = new UserService();
       return UserService.userServiceInstance;
     }
   }
 
-  public async userLogin(user: IUser): Promise<any> {
-    return await User.findOne({ $and: [{ email: user.email }, { password: user.password }] });
+  public async createUser(user_data: IUser): Promise<any> {
+    const user = new User();
+    user.email = user_data.email;
+    user.salt = crypto.randomBytes(16).toString('hex');
+    user.hash = crypto.pbkdf2Sync(user_data.password, user.salt,1000, 64, `sha512`).toString(`hex`);
+    return user.save();
+  }
+
+  public async userLogin(user_data: IUser): Promise<any> {
+    const userData = await User.findOne({ email: user_data.email });
+    if (userData === null) {
+      return false;
+    } else {
+      let hash = crypto.pbkdf2Sync(user_data.password,
+        userData.salt as string, 1000, 64, `sha512`).toString(`hex`);
+        console.log(hash);
+      return userData.hash === hash;
+    }
   }
 
   public createToken(email: string) {
