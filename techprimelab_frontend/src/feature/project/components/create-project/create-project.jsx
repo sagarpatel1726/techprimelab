@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './create-project.module.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { axiosInstance } from '../../../../axios/axios.instance';
 
 const CreatProjectSchema = Yup.object().shape({
     theme: Yup.string().required('Email is required').required('Theme is required'),
@@ -20,9 +21,9 @@ const CreatProjectSchema = Yup.object().shape({
 function CreateProject() {
 
     const createProject = (value) => {
-        console.log('Form Data:', value);
+        axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => console.log(err));
     }
-    
+
     return (
         <div className={`container-fluid ${styles.wrapper}`}>
             <div className="row">

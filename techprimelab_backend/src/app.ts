@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { mainRouter } from './routers/main.router.js';
 import cors from 'cors';
+import cookieParser from  'cookie-parser';
 
 if (process.env.NODE_ENV === "development") {
     dotenv.config({ path: "./.env.development" });
@@ -11,6 +12,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const app = express();
+app.use(cookieParser());
 mongoose.connect('mongodb://127.0.0.1:27017/techprimelab').then(() => {
     console.log('MongoDB is connected with Node Application 👍');
 }).catch((e) => {

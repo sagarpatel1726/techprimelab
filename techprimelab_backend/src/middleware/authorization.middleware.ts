@@ -4,8 +4,7 @@ import { userService } from "../services/user.service.js";
 export function authorization(req: Request, res: Response, next: NextFunction) {
     try {
         const accessToken: string = req.headers.authorization as string;
-        console.log(accessToken);
-        console.log(userService.varifyToken(accessToken));
+        userService.varifyToken(accessToken)
         next();
     } catch (error: any) {
         res.status(401).json({error : 'UnAuthorized'});

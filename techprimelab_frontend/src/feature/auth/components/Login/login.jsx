@@ -19,10 +19,8 @@ function Login() {
   const ref = useRef();
 
   useEffect(() => {
-    if(localStorage.getItem('authToken')){
-      navigation('/home');
-    }
-  })
+    axiosInstance.post('/auth').then((res)=>{ setStatus(res?.data?.message); navigation('/home');}).catch(err => console.log(err));
+  },[])
 
   const loginUser = (value) => {
     axiosInstance.post('/auth',value).then((res)=>{ localStorage.setItem('authToken', res?.data?.authToken);setStatus(res?.data?.message); navigation('/home');}).catch(err => setStatus(err?.response?.data?.message))
