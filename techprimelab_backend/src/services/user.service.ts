@@ -31,7 +31,6 @@ export class UserService {
     } else {
       let hash = crypto.pbkdf2Sync(user_data.password,
         userData.salt as string, 1000, 64, `sha512`).toString(`hex`);
-        console.log(hash);
       return userData.hash === hash;
     }
   }
