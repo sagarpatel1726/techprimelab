@@ -50,7 +50,7 @@ function CreateProject() {
                                             <label htmlFor="reason">Reason</label>
                                             <Field as="select" className={`form-control ${styles.input} ${(errors.reason && touched.reason) ? styles.errorInputfield : ''}`} name="reason" id="reason" value={values.reason}>
                                                 <option value="for business">For Business</option>
-                                                <option selected={true} value="for demo">For Demo</option>
+                                                <option value="for demo">For Demo</option>
                                             </Field>
                                             <div>{errors.reason && touched.reason ? (<div className='text-danger'>{errors.reason}</div>) : null}</div>
 
@@ -123,11 +123,11 @@ function CreateProject() {
                                             </Field>
                                             <div>{errors.location && touched.location ? (<div className='text-danger'>{errors.location}</div>) : null}</div>
                                         </div>
-                                        <div className={`row flex-row-reverse`}>
-                                            <div className={`col-sm-3 mt-3 ${styles.inputstatusWrapper}`}>
+                                        <div className={`row flex-row-reverse w-100 ${styles.Row}`}>
+                                            <div className={`col-sm-3 ${styles.inputstatusWrapper}`}>
                                                 <label>status:</label><span className='font-weight-bold'> Registered</span>
                                             </div>
-                                            <div className={`col-sm-2 mt-3 text-right ${styles.saveButtonMobile}`}>
+                                            <div className={`col-sm-2 text-right ${styles.saveButtonMobile}`}>
                                                 <button type="submit" className={`${styles.button}`}>Save Project</button>
                                             </div>
                                         </div>

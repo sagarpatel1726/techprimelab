@@ -15,9 +15,9 @@ export class UserController {
         const userData = await this.userService.userLogin(user);
         console.log(userData);
         if(userData == null){
-            res.status(404).json({status:'InValid User'});
+            res.status(404).json({status:'Invalid credentials'});
         }else{
-            res.status(200).json({status:'Valid User'});
+            res.status(200).json({status:'Valid credentials'});
         }    
     }
 }

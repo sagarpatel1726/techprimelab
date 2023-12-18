@@ -164,4 +164,7 @@ label{
     .Row{
         margin-top: 0 !important;
     }
+    .inputWrapper{
+        margin-right: 0 !important;
+    }
 }

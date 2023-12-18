@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styles from './login.module.css';
@@ -14,11 +14,12 @@ const SignupSchema = Yup.object().shape({
 });
 
 function Login() {
+  const [status, setStatus] = useState('');
   const navigation = useNavigate();
   const ref = useRef();
 
   const loginUser = (value) => {
-    axiosInstance.post('/auth',value).then((res)=>{ console.log(res); navigation('/home');}).catch(err => console.log(err?.response?.data))
+    axiosInstance.post('/auth',value).then((res)=>{ setStatus(res?.data?.status); navigation('/home');}).catch(err => setStatus(err?.response?.data?.status))
   }
 
   const showPassword = () => {
@@ -62,6 +63,7 @@ function Login() {
                 </Form>
               )}
             </Formik>
+            <p className={`${styles.errorLabel} mt-4 text-center`}>{status}</p>
           </div>
         </div>
       </div>
