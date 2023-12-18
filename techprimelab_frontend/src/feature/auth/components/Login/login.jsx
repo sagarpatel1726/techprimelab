@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import styles from './login.module.css';
@@ -18,8 +18,14 @@ function Login() {
   const navigation = useNavigate();
   const ref = useRef();
 
+  useEffect(() => {
+    if(localStorage.getItem('authToken')){
+      navigation('/home');
+    }
+  })
+
   const loginUser = (value) => {
-    axiosInstance.post('/auth',value).then((res)=>{ setStatus(res?.data?.status); navigation('/home');}).catch(err => setStatus(err?.response?.data?.status))
+    axiosInstance.post('/auth',value).then((res)=>{ localStorage.setItem('authToken', res?.data?.authToken);setStatus(res?.data?.message); navigation('/home');}).catch(err => setStatus(err?.response?.data?.message))
   }
 
   const showPassword = () => {

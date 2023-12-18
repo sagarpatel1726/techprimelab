@@ -18,6 +18,11 @@ const CreatProjectSchema = Yup.object().shape({
 
 
 function CreateProject() {
+
+    const createProject = (value) => {
+        console.log('Form Data:', value);
+    }
+    
     return (
         <div className={`container-fluid ${styles.wrapper}`}>
             <div className="row">
@@ -33,7 +38,7 @@ function CreateProject() {
                         </div>
                     </div>
                     <div className={`${styles.projectContent}`}>
-                        <Formik initialValues={{ theme: '', reason: 'for business', type: 'internal', division: 'division A', category: 'quality A', priority: 'high', department: 'straregy', startdate: '', enddate: '', location: 'pune' }} validationSchema={CreatProjectSchema} onSubmit={(value) => {console.log({status: 'registered',...value})}}>
+                        <Formik initialValues={{ theme: '', reason: 'for business', type: 'internal', division: 'division A', category: 'quality A', priority: 'high', department: 'straregy', startdate: '', enddate: '', location: 'pune' }} validationSchema={CreatProjectSchema} onSubmit={(value) => createProject({status: 'registered',...value})}>
                             {({ errors, touched, values }) => (
                                 <Form className={`${styles.form}`}>
                                     <div className={`row justify-content-between ${styles.themeRow}`}>

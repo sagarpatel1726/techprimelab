@@ -1,6 +1,16 @@
+:root{
+    --backgroundcolor: whitesmoke;
+    --shadowcolor: rgb(220, 220, 220);
+    --white: white;
+    --gray: gray;
+    --red: red;
+    --primary-blue: #035FB2;
+    --border-color: #ced4da;
+}
+
 .wrapper{
     height: 100vh;
-    background-color:  whitesmoke;
+    background-color:  var(--backgroundcolor);
 }
 .loginContent {
     width: 430px;
@@ -12,9 +22,9 @@
 .form {
     padding: 40px 30px;
     border-radius: 2%;
-    box-shadow: 2px 2px 2px rgb(220, 220, 220), -2px 2px 2px rgb(220, 220, 220);
+    box-shadow: 2px 2px 2px var(--shadowcolor), -2px 2px 2px var(--shadowcolor);
     font-weight: 400;
-    background-color: white;
+    background-color: var(--white);
 }
 
 .logoText {
@@ -28,7 +38,7 @@
 }
 
 .button {
-    background-color: #035FB2 !important;
+    background-color: var(--primary-blue) !important;
     width: 200px;
     border-radius: 180px !important;
     margin-top: 0;
@@ -39,7 +49,7 @@
 }
 
 .input:focus {
-    border-color: #ced4da !important;
+    border-color: var(--border-color) !important;
     box-shadow: none !important;
 }
 
@@ -53,16 +63,16 @@
 
 .forgetPassword {
     font-size: 12px;
-    color: #126CBD;
+    color: var(--primary-blue);
     font-weight: 500;
 }
 
 .errorInputfield {
-    border: 1px solid red !important;
+    border: 1px solid var(--red) !important;
 }
 
 .errorLabel{
-    color: red;
+    color: var(--red);
 }
 
 .passwordWrapper{
@@ -78,6 +88,10 @@
     margin-bottom: 25px;
 }
 @media screen and (max-width: 440px) {
+    .wrapper{
+        background-color: var(--white);
+    }
+
     .backgroundImage {
         height: 40vh;
     }
