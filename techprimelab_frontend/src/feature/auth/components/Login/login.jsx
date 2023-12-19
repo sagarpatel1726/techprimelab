@@ -19,11 +19,14 @@ function Login() {
   const ref = useRef();
 
   useEffect(() => {
-    axiosInstance.post('/auth').then((res)=>{ setStatus(res?.data?.message); navigation('/home');}).catch(err => console.log(err));
-  },[])
+    const isTokenPresent = sessionStorage.getItem('authToken')
+    if (isTokenPresent) {
+      navigation('/home');
+    }
+  }, [])
 
   const loginUser = (value) => {
-    axiosInstance.post('/auth',value).then((res)=>{ localStorage.setItem('authToken', res?.data?.authToken);setStatus(res?.data?.message); navigation('/home');}).catch(err => setStatus(err?.response?.data?.message))
+    axiosInstance.post('/auth', value).then((res) => { sessionStorage.setItem('authToken', res?.data?.authToken); setStatus(res?.data?.message); navigation('/home'); }).catch(err => setStatus(err?.response?.data?.message));
   }
 
   const showPassword = () => {

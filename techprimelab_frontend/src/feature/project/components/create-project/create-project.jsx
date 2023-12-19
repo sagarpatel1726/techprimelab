@@ -27,7 +27,7 @@ function CreateProject() {
     }
 
     const logout = () => {
-        localStorage.removeItem('authToken');
+        sessionStorage.removeItem('authToken');
         navigation('/');
     }
 

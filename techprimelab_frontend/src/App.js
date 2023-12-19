@@ -7,7 +7,7 @@ const PrivateRouter = (props) => {
   const {children} = props
 
 
-  if(localStorage.getItem("authToken")){
+  if(sessionStorage.getItem("authToken")){
     return children
   }
   return <Navigate to="/" replace />

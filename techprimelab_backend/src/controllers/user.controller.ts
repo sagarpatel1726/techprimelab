@@ -12,41 +12,26 @@ export class UserController {
     public loginUser = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const user: IUser = req.body;
-            const token: string = req.headers.authorization as string;
-            let isTokenValid = false
-
-            if (token && isTokenValid) {
-                try {
-                    isTokenValid = userService.varifyToken(token) ? true : false
-                } catch (error) {
-                    isTokenValid = false
-                }
-                res.status(200).json({ success: "true", message: 'Valid User token' });
-                return;
-            } else if (!isTokenValid && (!user.email || !user.password)) {
-                res.status(404).json({ success: "false", message: 'Invalid token' });
-                return
+            const userData = await this.userService.userLogin(user);
+            if (!userData) {
+                res.status(404).json({ success: "false", message: 'Invalid User' });
             } else {
-                const userData = await this.userService.userLogin(user);
-                if (userData == false) {
-                    res.status(404).json({ success: "false", message: 'Invalid User' });
-                } else {
-                    const authToken = this.userService.createToken(user.email);
-                    res.status(200).json({ success: "true", message: 'Valid User', authToken });
-                }
+                const authToken = this.userService.createToken(user.email);
+                res.status(200).json({ success: "true", message: 'Valid User', authToken });
             }
-        } catch (error) {
+        }
+        catch (error) {
             res.status(404).json({ success: "false", message: 'Internal server error!' });
         }
     }
 
     public createUser = async (req: Request, res: Response, next: NextFunction) => {
-        try{
-            const user:IUser = req.body;
+        try {
+            const user: IUser = req.body;
             const userData = await userService.createUser(user);
-            res.status(201).json({data: userData, message: 'User created successfully'});
-        } catch(error: any){
-            res.status(500).json({error: 'Internal server error!'});
+            res.status(201).json({ data: userData, message: 'User created successfully' });
+        } catch (error: any) {
+            res.status(500).json({ error: 'Internal server error!' });
         }
     }
 }
