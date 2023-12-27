@@ -16,7 +16,7 @@ export class ProjectController {
             res.status(201).json({ data: projectDetails, message: 'Project created successfully.' });
 
         } catch (error: any) {
-            res.status(500).json({ error: 'Internal server error.' });
+            res.status(500).json({ error: error });
         }
     }
 }

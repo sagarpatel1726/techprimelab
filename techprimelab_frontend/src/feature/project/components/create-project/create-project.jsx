@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './create-project.module.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -21,9 +21,10 @@ const CreatProjectSchema = Yup.object().shape({
 
 function CreateProject() {
     const navigation = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const createProject = (value) => {
-        axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => console.log(err));
+        axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => setErrorMessage(err.response.data.error.message));
     }
 
     const logout = () => {
@@ -45,10 +46,17 @@ function CreateProject() {
                             <img className={`${styles.logout}`} onClick={logout} src={process.env.PUBLIC_URL + "/images/Logout.svg"} alt="logout.svg" />
                         </div>
                     </div>
+                    
                     <div className={`${styles.projectContent}`}>
+                    
                         <Formik initialValues={{ theme: '', reason: 'for business', type: 'internal', division: 'division A', category: 'quality A', priority: 'high', department: 'straregy', startdate: '', enddate: '', location: 'pune' }} validationSchema={CreatProjectSchema} onSubmit={(value) => createProject({status: 'registered',...value})}>
                             {({ errors, touched, values }) => (
                                 <Form className={`${styles.form}`}>
+                                    <div className="row">
+                                    <div className="col-sm-12 text-danger">
+                                    {errorMessage}
+                                    </div>
+                                    </div>
                                     <div className={`row justify-content-between ${styles.themeRow}`}>
                                         <div className="col-sm-7">
                                             <Field type="text" className={`form-control ${styles.bigInput} ${(errors.theme && touched.theme) ? styles.errorInputfield : ''}`} name="theme" id="theme"  placeholder="Enter Project Theme" />
@@ -149,6 +157,7 @@ function CreateProject() {
                             )}
                         </Formik>
                     </div>
+                    
                 </div>
             </div>
         </div>

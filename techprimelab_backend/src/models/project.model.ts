@@ -1,4 +1,9 @@
-import mongoose from "mongoose";
+import mongoose, { Date } from "mongoose";
+
+const getFromObj =(obj: any, key : string | number) : any=> {
+return obj[key] || null
+}
+
 
 const project = new mongoose.Schema({
     category: { type: String, required: true},
@@ -8,7 +13,16 @@ const project = new mongoose.Schema({
     location: { type: String, required: true},
     priority: { type: String, required: true},
     reason: { type: String, required: true},
-    startdate: { type: Date, required: true},
+    startdate: { type: Date, required: true,  validate: {
+        validator : function (value: Date): boolean {
+            let end = getFromObj(this, "enddate") as Date
+            console.log({end})
+          // 'this' refers to the document being validated;
+          return value < end
+        },
+        message: 'Start date must be less than end date',
+      },
+    },
     status: { type: String, required: true},
     theme: { type: String, required: true},
     type: { type: String, required: true},
