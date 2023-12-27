@@ -15,7 +15,7 @@ const project = new mongoose.Schema({
     reason: { type: String, required: true},
     startdate: { type: Date, required: true,  validate: {
         validator : function (value: Date): boolean {
-            let end = getFromObj(this, "enddate") as Date
+            let end = (this as any).enddate 
             console.log({end})
           // 'this' refers to the document being validated;
           return value < end
