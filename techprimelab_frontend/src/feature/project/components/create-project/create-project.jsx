@@ -24,7 +24,8 @@ function CreateProject() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const createProject = (value) => {
-        axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => setErrorMessage(err.response.data.error.message));
+        setErrorMessage('');
+        axiosInstance.post('/project',value).then(res => console.log(res)).catch(err => setErrorMessage(err?.response?.data?.error?.message));
     }
 
     const logout = () => {
