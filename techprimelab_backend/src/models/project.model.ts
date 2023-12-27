@@ -1,10 +1,4 @@
 import mongoose, { Date } from "mongoose";
-
-const getFromObj =(obj: any, key : string | number) : any=> {
-return obj[key] || null
-}
-
-
 const project = new mongoose.Schema({
     category: { type: String, required: true},
     department: { type: String, required: true},
